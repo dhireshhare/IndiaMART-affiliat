@@ -7,7 +7,6 @@
   <meta name="description" content="किसान खरेदी केंद्र: IndiaMART Affiliate Products — सर्च करा आणि प्रॉडक्ट्स पाहा." />
   <meta name="theme-color" content="#0b1020" />
   <meta name="color-scheme" content="dark" />
-
   <style>
     :root{
       --border: rgba(255,255,255,.14);
@@ -62,31 +61,81 @@
   </div>
 
   <script>
-    const PRODUCTS = [
-      {"name":"Tarpaulins","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true","link":"https://indiamart.in/v/1P8dybQX"},
-      {"name":"Fencing Wire","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true","link":"https://indiamart.in/v/pkJ4m4oX"},
-      {"name":"Britelite Led torch","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Britelite%20Led%20torch.webp?raw=true","link":"https://indiamart.in/v/e9z5L45z"},
-      {"name":"Chain Saw Machine","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Chain%20Saw%20Machine.webp?raw=true","link":"https://indiamart.in/v/Bq1O85ql"},
-      {"name":"Solar Inverter","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Inverter.webp?raw=true","link":"https://indiamart.in/v/30yQzGvP"},
-      {"name":"Megaphone","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Megaphone.webp?raw=true","link":"https://indiamart.in/v/8z6xwvoX"},
-      {"name":"Roundup","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Roundup.webp?raw=true","link":"https://indiamart.in/v/6m1n2YpY"},
-      {"name":"Rain Pipe","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Rain%20Pipe.webp?raw=true","link":"https://indiamart.in/v/9aB1c2dE"},
-      {"name":"Brush Cutters","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Brush%20Cutters.webp?raw=true","link":"https://indiamart.in/v/5mN7k2wZ"},
-      {"name":"Spray Nozzle","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Spray%20Nozzle.webp?raw=true","link":"https://indiamart.in/v/4pQ5r6sT"},
-      {"name":"Netafim Drip Irrigation","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Netafim%20Drip%20Irrigation.webp?raw=true","link":"https://indiamart.in/v/2hJ3k4lM"},
-      {"name":"Solar Camera","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Camera.webp?raw=true","link":"https://indiamart.in/v/4lvMyBPl"},
-      {"name":"Flour Mill","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Flour%20Mill.webp?raw=true","link":"https://indiamart.in/v/pkxqnENk"},
-      {"name":"Power Sprayer","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Sprayer.webp?raw=true","link":"https://indiamart.in/v/R3YVZ7dE"},
-      {"name":"PVC Pipes","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/PVC%20Pipes.webp?raw=true","link":"https://indiamart.in/v/Jan1GX8M"},
-      {"name":"Earth Auger","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Earth%20Auger.webp?raw=true","link":"https://indiamart.in/v/Bq1O85ql"},
-      {"name":"Solar Zatka Machine Kit","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Zatka%20Machine%20Kit.webp?raw=true","link":"https://indiamart.in/v/r8xOJYLX"},
-      {"name":"Electric Chaff Cutter","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Electric%20Chaff%20Cutter.webp?raw=true","link":"https://indiamart.in/v/6m1n2YpY"},
-      {"name":"Shaktiman Rotary Tiller","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Shaktiman%20Rotary%20Tiller.webp?raw=true","link":"https://indiamart.in/v/8uV9w0xY"},
-      {"name":"Nilkamal Plastic Crates","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Nilkamal%20Plastic%20Crates.webp?raw=true","link":"https://indiamart.in/v/7qR8s9tU"},
-      {"name":"Power Weeder","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Weeder.webp?raw=true","link":"https://indiamart.in/v/5mN7k2wZ"},
-      {"name":"Sugarcane Juice Machine","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Sugarcane%20Juice%20Machine.webp?raw=true","link":"https://indiamart.in/v/9aB1c2dE"},
-      {"name":"Irrigation Sprinklers","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Irrigation%20Sprinklers.webp?raw=true","link":"https://indiamart.in/v/3kL6m7nP"}
+    /** =========================
+     * 1) इथे खरे affiliate links भरा
+     *    फॉर्मॅट: "Product Name": "https://indiamart.in/v/XXXXXX"
+     *    जे नाहीत त्यासाठी खाली auto-search link वापरला जाईल.
+     * ========================= */
+    const LINK_MAP = {
+      // उदाहरण:
+      // "Britelite Led torch": "https://indiamart.in/v/e9z5L45z",
+      // "Tarpaulins": "https://indiamart.in/v/1P8dybQX",
+      // बाकी नंतर हळूहळू भरत जा.
+    };
+
+    /** =========================
+     * 2) GitHub RAW image base
+     * ========================= */
+    const RAW_BASE = "https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/";
+
+    /** =========================
+     * 3) तुमची product यादी
+     *    (इथे नाव जसे आहे तसेच .webp फाईल ठेवली असेल असे गृहीत)
+     *    जर image फाईलचे नाव वेगळे असेल तर below `imgName` मध्ये बदल करा.
+     * ========================= */
+    const PRODUCT_NAMES = [
+      "Tarpaulins",
+      "Fencing Wire",
+      "Britelite Led torch",
+      "Chain Saw Machine",
+      "Solar Inverter",
+      "Megaphone",
+      "Roundup",
+      "Rain Pipe",
+      "Brush Cutters",
+      "Spray Nozzle",
+      "Netafim Drip Irrigation",
+      "Solar Camera",
+      "Flour Mill",
+      "Power Sprayer",
+      "PVC Pipes",
+      "Earth Auger",
+      "Solar Zatka Machine Kit",
+      "Electric Chaff Cutter",
+      "Shaktiman Rotary Tiller",
+      "Nilkamal Plastic Crates",
+      "Power Weeder",
+      "Sugarcane Juice Machine",
+      "Irrigation Sprinklers"
     ];
+
+    /** =========================
+     * 4) Utility: नाव→GitHub RAW इमेज URL
+     *    (.webp फाईल; spaces = %20)
+     * ========================= */
+    function imgUrlFromName(name){
+      const imgName = encodeURIComponent(name) + ".webp";
+      return `${RAW_BASE}${imgName}?raw=true`;
+    }
+
+    /** =========================
+     * 5) Utility: नाव→Affiliate link किंवा Search link (fallback)
+     * ========================= */
+    function linkFromName(name){
+      if (LINK_MAP[name]) return LINK_MAP[name];
+      // default: सुरक्षित fallback — संबंधित IndiaMART शोध पृष्ठ
+      const q = encodeURIComponent(name);
+      return `https://www.indiamart.com/search.mp?ss=${q}`;
+    }
+
+    /** =========================
+     * 6) PRODUCTS तयार करा (image + link)
+     * ========================= */
+    const PRODUCTS = PRODUCT_NAMES.map(n => ({
+      name: n,
+      img: imgUrlFromName(n),
+      link: linkFromName(n)
+    }));
 
     const grid = document.getElementById('grid');
     const q = document.getElementById('q');
@@ -94,18 +143,20 @@
     function render(){
       const term = (q.value || '').toLowerCase();
       grid.innerHTML = '';
-      PRODUCTS.filter(p => p.name.toLowerCase().includes(term)).forEach(p=>{
-        const card = document.createElement('a');
-        card.className='card';
-        card.href=p.link;
-        card.target="_blank";
-        card.rel="noopener noreferrer";
-        card.innerHTML=`
-          <div class="thumb"><img src="${p.img}" alt="${p.name}"></div>
-          <p class="name">${p.name}</p>
-          <div class="btn">खरेदी करा</div>`;
-        grid.appendChild(card);
-      });
+      PRODUCTS
+        .filter(p => p.name.toLowerCase().includes(term))
+        .forEach(p=>{
+          const card = document.createElement('a');
+          card.className='card';
+          card.href=p.link;
+          card.target="_blank";
+          card.rel="noopener noreferrer";
+          card.innerHTML=`
+            <div class="thumb"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.thumb').innerHTML='Image उपलब्ध नाही'"></div>
+            <p class="name">${p.name}</p>
+            <div class="btn">खरेदी करा</div>`;
+          grid.appendChild(card);
+        });
     }
 
     q.addEventListener('input', render);
