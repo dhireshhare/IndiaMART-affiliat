@@ -8,459 +8,106 @@
   <meta name="theme-color" content="#0b1020" />
   <meta name="color-scheme" content="dark" />
 
-  <!-- Speed: preconnect / dns-prefetch for faster image + link opens -->
-  <link rel="dns-prefetch" href="//agrotimes.in" />
-  <link rel="preconnect" href="https://agrotimes.in" crossorigin />
-  <link rel="dns-prefetch" href="//indiamart.in" />
-  <link rel="preconnect" href="https://indiamart.in" crossorigin />
-  <link rel="dns-prefetch" href="//indiamart.com" />
-  <link rel="preconnect" href="https://indiamart.com" crossorigin />
-
   <style>
     :root{
-      --page-bg: url('https://agrotimes.in/wp-content/uploads/2025/12/20251218_215050.webp');
-      --card-radius: 18px;
+      --page-bg: #0b1020;
       --border: rgba(255,255,255,.14);
       --shadow: 0 18px 45px rgba(0,0,0,.30);
     }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:#f5f7fb;
-
-      /* Lighter background (still with image) */
-      background:
-        radial-gradient(900px 500px at 15% 10%, rgba(94,234,212,.16), transparent 60%),
-        radial-gradient(700px 450px at 90% 20%, rgba(59,130,246,.16), transparent 60%),
-        radial-gradient(600px 600px at 50% 110%, rgba(168,85,247,.12), transparent 60%),
-        linear-gradient(180deg, rgba(8,10,20,.94), rgba(6,8,18,.94)),
-        var(--page-bg);
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      overflow-x:hidden;
+      background:linear-gradient(180deg,#0b1020,#0f172a);
+      min-height:100vh;
     }
-
-    /* soft overlay (keeps readable but not too heavy) */
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background: linear-gradient(180deg, rgba(6,8,18,.78), rgba(6,8,18,.88));
-      z-index:-1;
-      pointer-events:none;
-    }
-
-    .wrap{
-      max-width:1200px;
-      margin:0 auto;
-      padding:28px 16px 60px;
-    }
-
+    .wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px;}
     header{
-      display:flex;
-      gap:16px;
-      align-items:flex-end;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding:18px 18px 14px;
-      border:1px solid var(--border);
-      border-radius:22px;
-      background: rgba(255,255,255,.06);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;
+      gap:16px;padding:18px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(255,255,255,.06);box-shadow:var(--shadow);backdrop-filter:blur(10px)
     }
-
-    .title{ display:grid; gap:6px; }
-    .title h1{
-      margin:0;
-      font-size: clamp(22px, 3.2vw, 34px);
-      letter-spacing:.2px;
-    }
-    .title p{ margin:0; opacity:.85; font-size:14px; }
-
-    .controls{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .input{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:14px;
-      background: rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
-      min-width:min(420px, 92vw);
-    }
-    .input input{
-      width:100%;
-      border:0;
-      outline:none;
-      background:transparent;
-      color:#fff;
-      font-size:14px;
-    }
-    .icon{
-      width:16px; height:16px;
-      opacity:.85; flex:0 0 auto;
-    }
-
-    .stats{
-      margin:16px 6px 10px;
-      font-size:13px;
-      opacity:.9;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .grid{
-      margin-top:10px;
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:14px;
-    }
-    @media (max-width:1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width:760px){
-      .grid{ grid-template-columns: repeat(2, 1fr); }
-      .input{ min-width:92vw; }
-    }
-    @media (max-width:420px){ .grid{ grid-template-columns: 1fr; } }
-
-    .card{
-      position:relative;
-      border-radius: var(--card-radius);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      overflow:hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,.30);
-      text-decoration:none;
-      color:inherit;
-      transform: translateZ(0);
-
-      /* Performance: browser can skip offscreen painting */
-      content-visibility: auto;
-      contain-intrinsic-size: 320px 260px;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-20px;
-      background: var(--card-bg) center/cover no-repeat;
-      filter: blur(14px) saturate(1.2);
-      opacity:.35;
-      transform: scale(1.08);
-    }
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55));
-    }
-
-    .card:hover{ border-color: rgba(255,255,255,.22); }
-    .card:hover .thumb img{ transform: scale(1.06); }
-
-    .inner{
-      position:relative;
-      z-index:1;
-      padding:12px;
-      display:grid;
-      gap:10px;
-    }
-
-    .thumb{
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      aspect-ratio: 4/3;
-      display:grid;
-      place-items:center;
-    }
-
-    .thumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition: transform .25s ease;
-      /* Speed: decode async */
-      image-rendering:auto;
-    }
-
-    .ph{
-      width:100%;
-      height:100%;
-      display:grid;
-      place-items:center;
-      font-size:12px;
-      opacity:.85;
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-    }
-
-    .name{
-      margin:0;
-      font-size:14px;
-      line-height:1.25;
-      letter-spacing:.2px;
-    }
-
-    .row{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:10px;
-      margin-top:2px;
-    }
-
-    .btn{
-      font-weight:800;
-      font-size:12px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      white-space:nowrap;
-    }
-
-    .badge{
-      position:absolute;
-      top:10px;
-      left:10px;
-      z-index:2;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.6px;
-      color:#fff;
-      background: rgba(16,185,129,.18);
-      border:1px solid rgba(16,185,129,.45);
-      box-shadow: 0 10px 22px rgba(0,0,0,.22);
-      text-transform: uppercase;
-    }
-    .dot{
-      width:7px; height:7px;
-      border-radius:50%;
-      background:#fff;
-      opacity:.95;
-      animation:pulse 1.2s infinite;
-    }
-    @keyframes pulse{
-      0%{ transform:scale(1); opacity:.95; }
-      50%{ transform:scale(1.7); opacity:.35; }
-      100%{ transform:scale(1); opacity:.95; }
-    }
-
-    .empty{
-      margin:22px 6px 0;
-      padding:18px;
-      border-radius:18px;
-      border:1px dashed rgba(255,255,255,.22);
-      background: rgba(255,255,255,.06);
-      opacity:.92;
-      display:none;
-    }
-
-    footer{
-      margin-top:34px;
-      opacity:.7;
-      font-size:12px;
-      text-align:center;
-    }
+    h1{margin:0;font-size:clamp(22px,3.2vw,34px)}
+    p{margin:0;opacity:.8;font-size:14px}
+    .input{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(0,0,0,.22);min-width:min(420px,92vw)}
+    .input input{width:100%;border:0;outline:none;background:transparent;color:#fff;font-size:14px}
+    .grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 12px 30px rgba(0,0,0,.30)}
+    .card:hover{border-color:rgba(255,255,255,.22)}
+    .thumb{aspect-ratio:4/3;overflow:hidden;border-radius:14px;margin:12px;background:#0a1326;display:grid;place-items:center}
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+    .card:hover img{transform:scale(1.06)}
+    .name{padding:0 12px;font-weight:600;font-size:14px}
+    .btn{margin:10px 12px 14px;padding:10px 12px;font-weight:700;font-size:12px;text-align:center;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(180deg,#38bdf8,#0284c7);color:#001224}
+    footer{text-align:center;margin-top:40px;font-size:12px;opacity:.7}
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <header>
-      <div class="title">
+      <div>
         <h1>किसान खरेदी केंद्र</h1>
         <p>IndiaMART Affiliate Products</p>
       </div>
-
-      <div class="controls">
-        <div class="input" title="सर्च">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <input id="q" type="search" placeholder="प्रॉडक्ट शोधा… (उदा. sprayer, pump, light)" autocomplete="off" />
-        </div>
+      <div class="input">
+        <input id="q" type="search" placeholder="प्रॉडक्ट शोधा… (उदा. sprayer, pump, light)" autocomplete="off" />
       </div>
     </header>
 
-    <div class="stats">
-      <div id="count">लोड होत आहे…</div>
-    </div>
-
     <main>
       <div id="grid" class="grid"></div>
-      <div id="empty" class="empty">काही परिणाम सापडले नाहीत. वेगळे शब्द वापरून शोधा.</div>
     </main>
 
     <footer>© 2025 किसान खरेदी केंद्र</footer>
   </div>
 
   <script>
-    // ===== Products =====
-    // (Group data ठेवले आहे पण UI मध्ये कुठेही दाखवत नाही)
-    const PRODUCTS = [{"name":"Solar Camera","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_081610.webp","link":"https://IndiaMART.in/v/4lvMyBPl","group":1},{"name":"Flour Mill","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_075728.webp","link":"https://IndiaMART.in/v/pkxqnENk","group":1},{"name":"Power Sprayer","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_075504.webp","link":"https://IndiaMART.in/v/R3YVZ7dE","group":1},{"name":"PVC Pipes","img":"https://agrotimes.in/wp-content/uploads/2025/10/20251025_130644.webp","link":"https://IndiaMART.in/v/Jan1GX8M","group":1},{"name":"Earth Auger","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_075902.webp","link":"https://IndiaMART.in/v/Bq1O85ql","group":3},{"name":"Battery Sprayer","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_075111.webp","link":"https://IndiaMART.in/v/e9z5L45z","group":4},{"name":"Mini Power Tiller","img":"https://agrotimes.in/wp-content/uploads/2025/10/20251025_130844.webp","link":"https://IndiaMART.in/v/71yNjR5X","group":4},{"name":"Drip Kit","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_074911.webp","link":"https://IndiaMART.in/v/r8xOJYLX","group":4},{"name":"Fogger Machine","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_075955.webp","link":"https://IndiaMART.in/v/0VVEo9VY","group":2},{"name":"Solar Fence","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_080158.webp","link":"https://IndiaMART.in/v/8z6xwvoX","group":2},{"name":"Chaff Cutter","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_080426.webp","link":"https://IndiaMART.in/v/6m1n2YpY","group":2},{"name":"Solar Inverter","img":"https://agrotimes.in/wp-content/uploads/2025/11/20251121_080631.webp","link":"https://IndiaMART.in/v/30yQzGvP","group":2},{"name":"Tarpaulins","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251218_214655.webp","link":"https://IndiaMART.in/v/1P8dybQX","group":1},{"name":"Submersible Pump","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251218_214833.webp","link":"https://IndiaMART.in/v/pkJ4m4oX","group":1},{"name":"Britelite Led torch","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251218_215050.webp","link":"https://IndiaMART.in/v/e9z5L45z","group":4},{"name":"Hand Gloves","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251218_215205.webp","link":"https://IndiaMART.in/v/xV3yZ0qN","group":4},{"name":"Garden Hose","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_211346.webp","link":"https://IndiaMART.in/v/5mN7k2wZ","group":3},{"name":"LED Flood Light","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_211505.webp","link":"https://IndiaMART.in/v/9aB1c2dE","group":3},{"name":"Motor Starter","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_211630.webp","link":"https://IndiaMART.in/v/3kL6m7nP","group":3},{"name":"Garden Tool Kit","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_211755.webp","link":"https://IndiaMART.in/v/7qR8s9tU","group":3},{"name":"Sprayer Nozzle","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_211910.webp","link":"https://IndiaMART.in/v/4pQ5r6sT","group":2},{"name":"PVC Water Tank","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_212035.webp","link":"https://IndiaMART.in/v/2hJ3k4lM","group":2},{"name":"Solar Street Light","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_212159.webp","link":"https://IndiaMART.in/v/6nO7p8qR","group":2},{"name":"Watering Can","img":"https://agrotimes.in/wp-content/uploads/2025/12/20251203_212323.webp","link":"https://IndiaMART.in/v/8uV9w0xY","group":2}];
+    const PRODUCTS = [
+      {"name":"Tarpaulins","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true"},
+      {"name":"Fencing Wire","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true"},
+      {"name":"Britelite Led torch","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Britelite%20Led%20torch.webp?raw=true"},
+      {"name":"Chain Saw Machine","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Chain%20Saw%20Machine.webp?raw=true"},
+      {"name":"Solar Inverter","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Inverter.webp?raw=true"},
+      {"name":"Megaphone","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Megaphone.webp?raw=true"},
+      {"name":"Roundup","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Roundup.webp?raw=true"},
+      {"name":"Rain Pipe","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Rain%20Pipe.webp?raw=true"},
+      {"name":"Brush Cutters","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Brush%20Cutters.webp?raw=true"},
+      {"name":"Spray Nozzle","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Spray%20Nozzle.webp?raw=true"},
+      {"name":"Netafim Drip Irrigation","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Netafim%20Drip%20Irrigation.webp?raw=true"},
+      {"name":"Solar Camera","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Camera.webp?raw=true"},
+      {"name":"Flour Mill","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Flour%20Mill.webp?raw=true"},
+      {"name":"Power Sprayer","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Sprayer.webp?raw=true"},
+      {"name":"PVC Pipes","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/PVC%20Pipes.webp?raw=true"},
+      {"name":"Earth Auger","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Earth%20Auger.webp?raw=true"},
+      {"name":"Solar Zatka Machine Kit","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Zatka%20Machine%20Kit.webp?raw=true"},
+      {"name":"Electric Chaff Cutter","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Electric%20Chaff%20Cutter.webp?raw=true"},
+      {"name":"Shaktiman Rotary Tiller","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Shaktiman%20Rotary%20Tiller.webp?raw=true"},
+      {"name":"Nilkamal Plastic Crates","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Nilkamal%20Plastic%20Crates.webp?raw=true"},
+      {"name":"Power Weeder","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Weeder.webp?raw=true"},
+      {"name":"Sugarcane Juice Machine","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Sugarcane%20Juice%20Machine.webp?raw=true"},
+      {"name":"Irrigation Sprinklers","img":"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Irrigation%20Sprinklers.webp?raw=true"}
+    ];
 
-    // ===== Speed tricks =====
-    // Preload first few images for instant above-the-fold render
-    (function preloadTopImages(){
-      const top = PRODUCTS.slice(0, 6);
-      for (const p of top) {
-        const l = document.createElement('link');
-        l.rel = 'preload';
-        l.as = 'image';
-        l.href = p.img;
-        document.head.appendChild(l);
-      }
-    })();
-
-    const gridEl  = document.getElementById('grid');
-    const emptyEl = document.getElementById('empty');
-    const qEl     = document.getElementById('q');
-    const countEl = document.getElementById('count');
-
-    const TOTAL = PRODUCTS.length;
-
-    function normalize(s){
-      return (s || '').toString().toLowerCase().trim();
-    }
-
-    function getFiltered(){
-      const q = normalize(qEl.value);
-      if (!q) return PRODUCTS;
-      return PRODUCTS.filter(p => normalize(p.name).includes(q));
-    }
-
-    // Lazy loader (fast + reliable)
-    let io = null;
-    function ensureObserver(){
-      if (io) return io;
-      io = new IntersectionObserver((entries) => {
-        for (const e of entries) {
-          if (!e.isIntersecting) continue;
-          const img = e.target;
-          const src = img.getAttribute('data-src');
-          if (src) {
-            img.src = src;
-            img.removeAttribute('data-src');
-          }
-          io.unobserve(img);
-        }
-      }, { rootMargin: "450px 0px" }); // start loading before it appears
-      return io;
-    }
+    const grid = document.getElementById('grid');
+    const q = document.getElementById('q');
 
     function render(){
-      const list = getFiltered();
-      const shown = list.length;
-
-      countEl.textContent = `दाखवत आहे: ${shown} / एकूण प्रॉडक्ट्स: ${TOTAL}`;
-
-      gridEl.innerHTML = '';
-      emptyEl.style.display = shown ? 'none' : 'block';
-      if (!shown) return;
-
-      const frag = document.createDocumentFragment();
-      const eagerCount = 8; // first items eager for instant load
-      const observer = ensureObserver();
-
-      list.forEach((p, idx) => {
-        const a = document.createElement('a');
-        a.className = 'card';
-        a.href = p.link;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.style.setProperty('--card-bg', `url('${p.img}')`);
-
-        // Create image element
-        const img = document.createElement('img');
-        img.alt = p.name;
-        img.decoding = 'async';
-
-        // Better network priority
-        if (idx < eagerCount) {
-          img.loading = 'eager';
-          img.fetchPriority = 'high';
-          img.src = p.img; // immediate
-        } else {
-          img.loading = 'lazy';
-          img.fetchPriority = 'low';
-          img.setAttribute('data-src', p.img); // lazy via IO
-        }
-
-        // Fallback if image fails
-        img.addEventListener('error', () => {
-          const ph = document.createElement('div');
-          ph.className = 'ph';
-          ph.textContent = 'Image उपलब्ध नाही';
-          const thumb = a.querySelector('.thumb');
-          if (thumb) {
-            thumb.innerHTML = '';
-            thumb.appendChild(ph);
-          }
-        }, { once: true });
-
-        const inner = document.createElement('div');
-        inner.className = 'inner';
-
-        const badge = document.createElement('div');
-        badge.className = 'badge';
-        badge.innerHTML = `<span class="dot"></span> BUY NOW`;
-        a.appendChild(badge);
-
-        const thumb = document.createElement('div');
-        thumb.className = 'thumb';
-        thumb.appendChild(img);
-
-        const name = document.createElement('p');
-        name.className = 'name';
-        name.textContent = p.name;
-
-        const row = document.createElement('div');
-        row.className = 'row';
-
-        const btn = document.createElement('span');
-        btn.className = 'btn';
-        btn.textContent = 'Buy Now';
-
-        row.appendChild(btn);
-
-        inner.appendChild(thumb);
-        inner.appendChild(name);
-        inner.appendChild(row);
-
-        a.appendChild(inner);
-        frag.appendChild(a);
-
-        // Observe lazy images
-        if (idx >= eagerCount) observer.observe(img);
+      const term = (q.value || '').toLowerCase();
+      grid.innerHTML = '';
+      PRODUCTS.filter(p => p.name.toLowerCase().includes(term)).forEach(p=>{
+        const card = document.createElement('a');
+        card.className='card';
+        card.href='#';
+        card.innerHTML=`
+          <div class="thumb"><img src="${p.img}" alt="${p.name}"></div>
+          <p class="name">${p.name}</p>
+          <div class="btn">BUY NOW</div>`;
+        grid.appendChild(card);
       });
-
-      gridEl.appendChild(frag);
     }
 
-    qEl.addEventListener('input', render);
+    q.addEventListener('input', render);
     render();
   </script>
 </body>
