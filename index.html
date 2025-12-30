@@ -1,194 +1,452 @@
-<!DOCTYPE html>
-<html lang="hi">
+<!doctype html>
+<html lang="mr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>मेन किसान खरेदी केंद्र — IndiaMART Affiliate Products</title>
-<style>
-:root{
-  --bg:#f7f8fa; --card:#fff; --text:#111; --muted:#6b7280; --shadow:0 10px 24px rgba(0,0,0,.08);
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-.wrap{max-width:1100px;margin:28px auto;padding:0 14px}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
-.brand{font-weight:900;font-size:20px;letter-spacing:.3px}
-.brand .sub{display:block;font-weight:700;font-size:12px;color:var(--muted);letter-spacing:.25px;margin-top:2px}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>किसान खरेदी केंद्र — IndiaMART Affiliate Products</title>
+  <meta name="description" content="किसान खरेदी केंद्र: IndiaMART Affiliate Products — सर्च करा आणि प्रॉडक्ट्स पाहा." />
+  <style>
+    :root {
+      --page-bg: url('https://agrotimes.in/wp-content/uploads/2025/12/20251218_215050.webp');
+      --card-radius: 18px;
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 18px 45px rgba(0,0,0,.30);
+    }
 
-/* Invisible search */
-.search-wrap{position:relative;width:360px;max-width:60vw}
-.search{width:100%;padding:10px 12px;border-radius:9999px;border:1px solid #e5e7eb;background:#fff;box-shadow:var(--shadow);opacity:0;pointer-events:auto}
-.search:focus{outline:2px solid #bfdcff;opacity:1}
-.hint{font-size:12px;color:var(--muted)}
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: #f5f7fb;
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(94,234,212,.18), transparent 60%),
+        radial-gradient(700px 450px at 90% 20%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(600px 600px at 50% 110%, rgba(168,85,247,.14), transparent 60%),
+        linear-gradient(180deg, rgba(8,10,20,.96), rgba(6,8,18,.96)),
+        var(--page-bg);
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      overflow-x: hidden;
+    }
 
-/* Grid */
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-@media(min-width:780px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
-.card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.09)}
-.thumb{display:block;aspect-ratio:1/1;overflow:hidden;background:#eef1f4}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.meta{padding:10px 10px 12px}
-.title{font-size:13px;line-height:1.25;font-weight:800;max-height:3.2em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
-.price{margin-top:6px;font-weight:800;font-size:13px}
-.link{display:inline-block;margin-top:8px;font-size:12px;color:#0b66e4;text-decoration:none}
-.link:focus,.link:hover{text-decoration:underline}
-.footer-note{margin-top:16px;font-size:12px;color:var(--muted)}
-kbd{background:#111;color:#fff;border-radius:6px;padding:2px 6px;font-size:11px}
-.badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:9999px;background:#eef2ff;color:#213b9a;margin-left:6px}
-</style>
+    /* subtle texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--page-bg) center/cover no-repeat;
+      filter: blur(18px) saturate(1.2);
+      opacity: .18;
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,8,18,.92), rgba(6,8,18,.92));
+      z-index: -1;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    header {
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 18px 18px 14px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .title {
+      display: grid;
+      gap: 6px;
+    }
+    .title h1 {
+      margin: 0;
+      font-size: clamp(22px, 3.2vw, 34px);
+      letter-spacing: .2px;
+    }
+    .title p {
+      margin: 0;
+      opacity: .85;
+      font-size: 14px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .input, .select {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 14px;
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+      min-width: min(420px, 92vw);
+    }
+
+    .input input {
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .select {
+      min-width: 180px;
+      padding: 10px 12px;
+    }
+    .select select {
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      appearance: none;
+    }
+
+    .hint {
+      width: 100%;
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: .75;
+    }
+
+    .stats {
+      margin: 16px 6px 10px;
+      font-size: 13px;
+      opacity: .85;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .grid {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .input { min-width: 92vw; }
+    }
+    @media (max-width: 420px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      position: relative;
+      border-radius: var(--card-radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,.30);
+      text-decoration: none;
+      color: inherit;
+      transform: translateZ(0);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background: var(--card-bg) center/cover no-repeat;
+      filter: blur(16px) saturate(1.2);
+      opacity: .35;
+      transform: scale(1.08);
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55));
+    }
+
+    .card:hover {
+      border-color: rgba(255,255,255,.22);
+    }
+    .card:hover .thumb img {
+      transform: scale(1.06);
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      padding: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .thumb {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      aspect-ratio: 4/3;
+      display: grid;
+      place-items: center;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .25s ease;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.25;
+      letter-spacing: .2px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .tag {
+      font-size: 12px;
+      opacity: .8;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      white-space: nowrap;
+    }
+
+    .btn {
+      font-weight: 700;
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .6px;
+      color: #fff;
+      background: rgba(16,185,129,.18); /* green-ish */
+      border: 1px solid rgba(16,185,129,.45);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: .95;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%   { transform: scale(1); opacity: .95; }
+      50%  { transform: scale(1.7); opacity: .35; }
+      100% { transform: scale(1); opacity: .95; }
+    }
+
+    .empty {
+      margin: 22px 6px 0;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.06);
+      opacity: .9;
+    }
+
+    footer {
+      margin-top: 34px;
+      opacity: .7;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      opacity: .8;
+      flex: 0 0 auto;
+    }
+  </style>
 </head>
+
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        मेन किसान खरेदी केंद्र
-        <span class="sub">IndiaMART Affiliate Products <span class="badge">CSV Driven</span></span>
+    <header>
+      <div class="title">
+        <h1>किसान खरेदी केंद्र</h1>
+        <p>IndiaMART Affiliate Products</p>
       </div>
-      <div class="search-wrap">
-        <input id="q" class="search" type="search" placeholder="खोजें… (फोकस: /)" aria-label="खोजें">
-        <div class="hint">Press <kbd>/</kbd> to search — search box stays invisible until focus.</div>
+
+      <div class="controls">
+        <div class="input" title="सर्च">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input id="q" type="search" placeholder="प्रॉडक्ट शोधा… (उदा. camera, pipes, sprayer)" autocomplete="off" />
+        </div>
+
+        <div class="select" title="ग्रुप फिल्टर">
+          <select id="group">
+            <option value="all">सर्व ग्रुप</option>
+          </select>
+        </div>
+
+        <div class="hint">कार्डवर क्लिक करा → थेट IndiaMART लिंक उघडेल</div>
       </div>
+    </header>
+
+    <div class="stats">
+      <div id="count">लोड होत आहे…</div>
+      <div>Tip: GitHub वर फक्त हीच <b>index.html</b> फाईल टाका ✅</div>
     </div>
 
-    <div id="grid" class="grid" role="list"></div>
-    <div class="footer-note">नोट: इथे कोणताही “ad” लेबल नाही. सर्व कार्ड्स तुमच्या CSV मधील प्रोडक्ट लिंक्सवर आधारित आहेत.</div>
+    <main>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" style="display:none;">काही परिणाम सापडले नाहीत. वेगळे शब्द वापरून शोधा.</div>
+    </main>
+
+    <footer>
+      © 2025 किसान खरेदी केंद्र
+    </footer>
   </div>
 
-<script>
-/* ========= CONFIG =========
-   products.csv हाच फाइल या index.html च्या शेजारी ठेवा.
-   CSV हेडर: title,link,image[,price]
-   IndiaMART affiliate लिंक्स link कॉलममध्ये ठेवा.
-*/
-const CSV_URLS = ["products.csv"];
+  <script>
+    // === PRODUCTS (CSV मधून घेतलेले) ===
+    const PRODUCTS = [{"name": "Solar Camera", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_081610.webp", "link": "https://IndiaMART.in/v/4lvMyBPl", "group": 1}, {"name": "Flour Mill", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_075728.webp", "link": "https://IndiaMART.in/v/pkxqnENk", "group": 1}, {"name": "Power Sprayer", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_075504.webp", "link": "https://IndiaMART.in/v/R3YVZ7dE", "group": 1}, {"name": "PVC Pipes", "img": "https://agrotimes.in/wp-content/uploads/2025/10/20251025_130644.webp", "link": "https://IndiaMART.in/v/Jan1GX8M", "group": 1}, {"name": "Earth Auger", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_075902.webp", "link": "https://IndiaMART.in/v/Bq1O85ql", "group": 3}, {"name": "Battery Sprayer", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_075111.webp", "link": "https://IndiaMART.in/v/e9z5L45z", "group": 4}, {"name": "Mini Power Tiller", "img": "https://agrotimes.in/wp-content/uploads/2025/10/20251025_130844.webp", "link": "https://IndiaMART.in/v/71yNjR5X", "group": 4}, {"name": "Drip Kit", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_074911.webp", "link": "https://IndiaMART.in/v/r8xOJYLX", "group": 4}, {"name": "Fogger Machine", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_075955.webp", "link": "https://IndiaMART.in/v/0VVEo9VY", "group": 2}, {"name": "Solar Fence", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_080158.webp", "link": "https://IndiaMART.in/v/8z6xwvoX", "group": 2}, {"name": "Chaff Cutter", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_080426.webp", "link": "https://IndiaMART.in/v/6m1n2YpY", "group": 2}, {"name": "Solar Inverter", "img": "https://agrotimes.in/wp-content/uploads/2025/11/20251121_080631.webp", "link": "https://IndiaMART.in/v/30yQzGvP", "group": 2}, {"name": "Tarpaulins", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251218_214655.webp", "link": "https://IndiaMART.in/v/1P8dybQX", "group": 1}, {"name": "Submersible Pump", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251218_214833.webp", "link": "https://IndiaMART.in/v/pkJ4m4oX", "group": 1}, {"name": "Britelite Led torch", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251218_215050.webp", "link": "https://IndiaMART.in/v/e9z5L45z", "group": 4}, {"name": "Hand Gloves", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251218_215205.webp", "link": "https://IndiaMART.in/v/xV3yZ0qN", "group": 4}, {"name": "Garden Hose", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_211346.webp", "link": "https://IndiaMART.in/v/5mN7k2wZ", "group": 3}, {"name": "LED Flood Light", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_211505.webp", "link": "https://IndiaMART.in/v/9aB1c2dE", "group": 3}, {"name": "Motor Starter", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_211630.webp", "link": "https://IndiaMART.in/v/3kL6m7nP", "group": 3}, {"name": "Garden Tool Kit", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_211755.webp", "link": "https://IndiaMART.in/v/7qR8s9tU", "group": 3}, {"name": "Sprayer Nozzle", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_211910.webp", "link": "https://IndiaMART.in/v/4pQ5r6sT", "group": 2}, {"name": "PVC Water Tank", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_212035.webp", "link": "https://IndiaMART.in/v/2hJ3k4lM", "group": 2}, {"name": "Solar Street Light", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_212159.webp", "link": "https://IndiaMART.in/v/6nO7p8qR", "group": 2}, {"name": "Watering Can", "img": "https://agrotimes.in/wp-content/uploads/2025/12/20251203_212323.webp", "link": "https://IndiaMART.in/v/8uV9w0xY", "group": 2}];
 
-/* ========= CSV Parser (robust for quotes/commas) ========= */
-function parseCSV(text){
-  const rows = [];
-  let i=0, field='', row=[], inQuotes=false;
-  while(i<text.length){
-    const c = text[i];
-    if(inQuotes){
-      if(c==='\"'){
-        if(text[i+1]==='\"'){ field+='\"'; i++; }
-        else { inQuotes=false; }
-      } else { field+=c; }
-    }else{
-      if(c==='\"'){ inQuotes=true; }
-      else if(c===','){ row.push(field); field=''; }
-      else if(c==='\n'){ row.push(field); rows.push(row); row=[]; field=''; }
-      else if(c==='\r'){ /* ignore */ }
-      else { field+=c; }
+    const gridEl  = document.getElementById('grid');
+    const emptyEl = document.getElementById('empty');
+    const qEl     = document.getElementById('q');
+    const groupEl = document.getElementById('group');
+    const countEl = document.getElementById('count');
+
+    // Populate group dropdown
+    (function initGroups(){
+      const groups = Array.from(new Set(PRODUCTS.map(p => p.group))).sort((a,b)=>a-b);
+      for (const g of groups) {
+        const opt = document.createElement('option');
+        opt.value = String(g);
+        opt.textContent = `ग्रुप ${g}`;
+        groupEl.appendChild(opt);
+      }
+    })();
+
+    function normalize(s) {
+      return (s || '').toString().toLowerCase().trim();
     }
-    i++;
-  }
-  if(field.length>0 || row.length>0){ row.push(field); rows.push(row); }
-  return rows;
-}
-function toObjects(rows){
-  if(!rows.length) return [];
-  const header = rows[0].map(h => (h||'').trim().toLowerCase());
-  const out = [];
-  for(let r=1;r<rows.length;r++){
-    const obj = {};
-    for(let c=0;c<header.length;c++){
-      const key = header[c] || ('col'+c);
-      obj[key] = (rows[r][c]||'').trim();
+
+    function getFiltered() {
+      const q = normalize(qEl.value);
+      const g = groupEl.value;
+
+      return PRODUCTS.filter(p => {
+        const okGroup = (g === 'all') || (String(p.group) === g);
+        if (!okGroup) return false;
+
+        if (!q) return true;
+
+        const name = normalize(p.name);
+        return name.includes(q);
+      });
     }
-    out.push(obj);
-  }
-  return out;
-}
-async function loadAllCSV(urls){
-  let all = [];
-  for(const url of urls){
-    try{
-      const res = await fetch(url, {cache:'no-store'});
-      if(!res.ok) continue;
-      const txt = await res.text();
-      const rows = parseCSV(txt);
-      const objs = toObjects(rows);
-      all = all.concat(objs);
-    }catch(e){ console.warn('CSV load fail:', url, e); }
-  }
-  return all;
-}
 
-/* ========= Normalization ========= */
-function normalizeItem(it){
-  const title = it.title || it['product name'] || it.name || it['शीर्षक'] || it['नाम'] || '';
-  const link  = it.link  || it.url || it.href || it['लिंक'] || it['indiamart link'] || '#';
-  const image = it.image || it.img || it['image url'] || it['चित्र'] || '';
-  const price = it.price || it['किंमत'] || it['क़ीमत'] || '';
-  return {title, link, image, price};
-}
+    function render() {
+      const list = getFiltered();
+      gridEl.innerHTML = '';
 
-/* ========= UI ========= */
-const elGrid = document.getElementById('grid');
-const elQ = document.getElementById('q');
-let items = [];
-let filtered = [];
+      countEl.textContent = `एकूण: ${list.length} प्रॉडक्ट्स`;
 
-function cardTemplate(item){
-  const img = (item.image && item.image.startsWith('http')) ? item.image : '';
-  const title = (item.title || '').toString();
-  const link = (item.link || '#').toString();
-  const price = (item.price || '').toString();
-  const rel = "noopener nofollow sponsored"; // affiliate safe attrs
-  return `
-    <div class="card" role="listitem">
-      <a class="thumb" href="${link}" target="_blank" rel="${rel}" aria-label="${title || 'लिंक'}">
-        ${img ? `<img loading="lazy" src="${img}" alt="">` : ``}
-      </a>
-      <div class="meta">
-        <div class="title">${title}</div>
-        ${price ? `<div class="price">${price}</div>` : ``}
-        <a class="link" href="${link}" target="_blank" rel="${rel}">खोलें</a>
-      </div>
-    </div>
-  `;
-}
-function render(list){
-  elGrid.innerHTML = list.map(cardTemplate).join('');
-}
+      if (!list.length) {
+        emptyEl.style.display = 'block';
+        return;
+      } else {
+        emptyEl.style.display = 'none';
+      }
 
-/* ========= Lazy image upgrade (optional fallback) ========= */
-const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries=>{
-  for(const e of entries){
-    if(e.isIntersecting){
-      const img = e.target.querySelector('img[data-src]');
-      if(img){ img.src = img.dataset.src; img.removeAttribute('data-src'); }
-      io.unobserve(e.target);
+      const frag = document.createDocumentFragment();
+
+      for (const p of list) {
+        const a = document.createElement('a');
+        a.className = 'card';
+        a.href = p.link;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.style.setProperty('--card-bg', `url('${p.img}')`);
+
+        a.innerHTML = `
+          <div class="badge"><span class="dot"></span> BUY NOW</div>
+          <div class="inner">
+            <div class="thumb">
+              <img src="${p.img}" alt="${p.name}" loading="lazy" />
+            </div>
+            <p class="name">${p.name}</p>
+            <div class="row">
+              <span class="tag">ग्रुप ${p.group}</span>
+              <span class="btn">Buy Now</span>
+            </div>
+          </div>
+        `;
+
+        frag.appendChild(a);
+      }
+
+      gridEl.appendChild(frag);
     }
-  }
-}) : null;
 
-/* ========= Boot ========= */
-async function boot(){
-  const raw = await loadAllCSV(CSV_URLS);
-  items = raw.map(normalizeItem).filter(x => x.link && x.link.startsWith('http'));
-  filtered = items.slice(0);
-  render(filtered);
-}
-boot();
+    // Events
+    qEl.addEventListener('input', render);
+    groupEl.addEventListener('change', render);
 
-/* ========= Invisible Search ========= */
-window.addEventListener('keydown', (e)=>{
-  if(e.key === '/'){
-    e.preventDefault();
-    elQ.focus();
-  }
-});
-elQ.addEventListener('input', (e)=>{
-  const q = e.target.value.trim().toLowerCase();
-  if(!q){ filtered = items.slice(0); render(filtered); return; }
-  filtered = items.filter(it =>
-    (it.title||'').toLowerCase().includes(q) ||
-    (it.link||'').toLowerCase().includes(q) ||
-    (it.price||'').toLowerCase().includes(q)
-  );
-  render(filtered);
-});
-</script>
+    // Initial render
+    render();
+  </script>
 </body>
 </html>
