@@ -61,28 +61,20 @@
   </div>
 
   <script>
-    /** =========================
-     * 1) इथे खरे affiliate links भरा
-     *    फॉर्मॅट: "Product Name": "https://indiamart.in/v/XXXXXX"
-     *    जे नाहीत त्यासाठी खाली auto-search link वापरला जाईल.
-     * ========================= */
+    /* ===== (1) इथे तुमचे खरे affiliate/product links भरा (ऐच्छिक) =====
+       फॉर्मॅट: "Product Name": "https://indiamart.in/v/XXXXXX"
+       जे नसतील त्यासाठी आपोआप IndiaMART Search link वापरला जाईल.
+    */
     const LINK_MAP = {
-      // उदाहरण:
+      // उदा:
       // "Britelite Led torch": "https://indiamart.in/v/e9z5L45z",
       // "Tarpaulins": "https://indiamart.in/v/1P8dybQX",
-      // बाकी नंतर हळूहळू भरत जा.
     };
 
-    /** =========================
-     * 2) GitHub RAW image base
-     * ========================= */
+    /* ===== (2) GitHub RAW image base (तुमचा दिलेला फॉरमॅट) ===== */
     const RAW_BASE = "https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/";
 
-    /** =========================
-     * 3) तुमची product यादी
-     *    (इथे नाव जसे आहे तसेच .webp फाईल ठेवली असेल असे गृहीत)
-     *    जर image फाईलचे नाव वेगळे असेल तर below `imgName` मध्ये बदल करा.
-     * ========================= */
+    /* ===== (3) प्रॉडक्ट यादी ===== */
     const PRODUCT_NAMES = [
       "Tarpaulins",
       "Fencing Wire",
@@ -109,32 +101,21 @@
       "Irrigation Sprinklers"
     ];
 
-    /** =========================
-     * 4) Utility: नाव→GitHub RAW इमेज URL
-     *    (.webp फाईल; spaces = %20)
-     * ========================= */
+    /* ===== (4) नाव→GitHub RAW इमेज URL (.webp) ===== */
     function imgUrlFromName(name){
-      const imgName = encodeURIComponent(name) + ".webp";
-      return `${RAW_BASE}${imgName}?raw=true`;
+      return `${RAW_BASE}${encodeURIComponent(name)}.webp?raw=true`;
     }
 
-    /** =========================
-     * 5) Utility: नाव→Affiliate link किंवा Search link (fallback)
-     * ========================= */
+    /* ===== (5) नाव→IndiaMART लिंक (affiliate नसल्यास search fallback) ===== */
     function linkFromName(name){
       if (LINK_MAP[name]) return LINK_MAP[name];
-      // default: सुरक्षित fallback — संबंधित IndiaMART शोध पृष्ठ
       const q = encodeURIComponent(name);
       return `https://www.indiamart.com/search.mp?ss=${q}`;
     }
 
-    /** =========================
-     * 6) PRODUCTS तयार करा (image + link)
-     * ========================= */
+    /* ===== (6) PRODUCTS तयार ===== */
     const PRODUCTS = PRODUCT_NAMES.map(n => ({
-      name: n,
-      img: imgUrlFromName(n),
-      link: linkFromName(n)
+      name: n, img: imgUrlFromName(n), link: linkFromName(n)
     }));
 
     const grid = document.getElementById('grid');
@@ -152,7 +133,10 @@
           card.target="_blank";
           card.rel="noopener noreferrer";
           card.innerHTML=`
-            <div class="thumb"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.thumb').innerHTML='Image उपलब्ध नाही'"></div>
+            <div class="thumb">
+              <img src="${p.img}" alt="${p.name}"
+                   onerror="this.closest('.thumb').innerHTML='Image उपलब्ध नाही'">
+            </div>
             <p class="name">${p.name}</p>
             <div class="btn">खरेदी करा</div>`;
           grid.appendChild(card);
