@@ -22,19 +22,52 @@
     .wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px;}
 
     header{
-      display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
-      padding:18px;border:1px solid var(--border);border-radius:22px;
-      background:rgba(255,255,255,.06);backdrop-filter:blur(10px)
+      display:flex;
+      justify-content:space-between;
+      align-items:center;                 /* ✅ better */
+      flex-wrap:wrap;
+      gap:12px;                           /* ✅ compact */
+      padding:16px;                       /* ✅ compact */
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:rgba(255,255,255,.06);
+      backdrop-filter:blur(10px);
     }
+
+    .titleBox{ flex: 1 1 260px; min-width:0; } /* ✅ allow shrink */
     h1{margin:0;font-size:clamp(22px,3.2vw,34px)}
     p{margin:0;opacity:.8;font-size:14px}
 
+    /* ✅ Search box stays INSIDE header */
     .input{
-      display:flex;align-items:center;gap:10px;padding:10px 12px;
-      border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(0,0,0,.22);
-      min-width:min(420px,92vw)
+      flex: 1 1 280px;                    /* ✅ can shrink & wrap */
+      max-width:420px;                    /* ✅ limit */
+      width:100%;
+      min-width:0;                        /* ✅ important for flex overflow */
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 11px;                   /* ✅ compact */
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:14px;
+      background:rgba(0,0,0,.22);
     }
-    .input input{width:100%;border:0;outline:none;background:transparent;color:#fff;font-size:14px}
+    .input input{
+      width:100%;
+      min-width:0;                        /* ✅ prevents overflow */
+      border:0;
+      outline:none;
+      background:transparent;
+      color:#fff;
+      font-size:14px;
+    }
+
+    /* ✅ Mobile: stack nicely */
+    @media (max-width:640px){
+      header{flex-direction:column; align-items:stretch;}
+      .input{max-width:100%;}
+    }
+
     .stats{margin:12px 2px 0;opacity:.85;font-size:13px}
 
     /* SINGLE BANNER */
@@ -80,10 +113,11 @@
 <div class="wrap">
 
   <header>
-    <div>
+    <div class="titleBox">
       <h1>किसान खरीद केंद्र</h1>
       <p>इंडियामार्ट एफिलिएट प्रोडक्ट्स</p>
     </div>
+
     <div class="input">
       <input id="q" type="search" placeholder="प्रोडक्ट खोजें… (जैसे sprayer, pump, torch)" autocomplete="off" />
     </div>
@@ -101,67 +135,3 @@
 
   <main>
     <div id="grid" class="grid"></div>
-  </main>
-
-  <footer>© 2025 किसान खरीद केंद्र</footer>
-</div>
-
-<script>
-const PRODUCTS = [
-  { name:"तिरपाल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true", link:"https://IndiaMART.in/v/Nbj9aJbr" },
-  { name:"फेंसिंग वायर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true", link:"https://IndiaMART.in/v/RDprz6NM" },
-  { name:"ब्राइटलाइट एलईडी टॉर्च", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Britelite%20Led%20torch.webp?raw=true", link:"https://IndiaMART.in/v/5xODB4XM" },
-  { name:"चेन सॉ मशीन", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Chain%20Saw%20Machine.webp?raw=true", link:"https://IndiaMART.in/v/D6bRgB6G" },
-  { name:"सोलर इन्वर्टर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Inverter.webp?raw=true", link:"https://IndiaMART.in/v/zOPy5Ovr" },
-  { name:"सोलर झटका मशीन किट", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Zatka%20Machine%20Kit.webp?raw=true", link:"https://IndiaMART.in/v/8RKwlZj7" },
-  { name:"मेगाफोन", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Megaphone.webp?raw=true", link:"https://IndiaMART.in/v/rmXKNQXL" },
-  { name:"राउंडअप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Roundup.webp?raw=true", link:"https://IndiaMART.in/v/KEYQjLmr" },
-  { name:"रेन पाइप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Rain%20Pipe.webp?raw=true", link:"https://IndiaMART.in/v/b2wq86BX" },
-  { name:"ब्रश कटर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Brush%20Cutters.webp?raw=true", link:"https://IndiaMART.in/v/NO9Gyq8e" },
-  { name:"स्प्रे नोजल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Spray%20Nozzle.webp?raw=true", link:"https://IndiaMART.in/v/PAAw2bqM" },
-  { name:"नेटाफिम ड्रिप इरिगेशन", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Netafim%20Drip%20Irrigation.webp?raw=true", link:"https://IndiaMART.in/v/6v8xjGMn" },
-  { name:"सोलर कैमरा", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Camera.webp?raw=true", link:"https://IndiaMART.in/v/kNex5jJA" },
-  { name:"आटा चक्की", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Flour%20Mill.webp?raw=true", link:"https://IndiaMART.in/v/xmM1yJY7" },
-  { name:"पावर स्प्रेयर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Sprayer.webp?raw=true", link:"https://IndiaMART.in/v/63Eoq0Bx" },
-  { name:"पीवीसी पाइप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/PVC%20Pipes.webp?raw=true", link:"https://IndiaMART.in/v/3KvEZxmw" },
-  { name:"अर्थ ऑगर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Earth%20Auger.webp?raw=true", link:"https://IndiaMART.in/v/JEaA2b3N" },
-  { name:"बैटरी स्प्रे पंप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Battery%20Spray%20Pump.webp?raw=true", link:"https://IndiaMART.in/v/7pj22yxq" },
-  { name:"इलेक्ट्रिक चाफ कटर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Electric%20Chaff%20Cutter.webp?raw=true", link:"https://IndiaMART.in/v/21xQ96Gm" },
-  { name:"शक्तिमान रोटरी टिलर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Shaktiman%20Rotary%20Tiller.webp?raw=true", link:"https://IndiaMART.in/v/w59Zzae3" },
-  { name:"नीलकमल प्लास्टिक क्रेट", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Nilkamal%20Plastic%20Crates.webp?raw=true", link:"https://IndiaMART.in/v/Mm4gk6yr" },
-  { name:"पावर वीडर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Weeder.webp?raw=true", link:"https://IndiaMART.in/v/yeAgBKPe" },
-  { name:"गन्ना जूस मशीन", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Sugarcane%20Juice%20Machine.webp?raw=true", link:"https://IndiaMART.in/v/lkP8oLr6" },
-  { name:"सिंचाई स्प्रिंकलर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Irrigation%20Sprinklers.webp?raw=true", link:"https://IndiaMART.in/v/QLP20eVX" }
-];
-
-const grid = document.getElementById('grid');
-const stats = document.getElementById('stats');
-const q = document.getElementById('q');
-
-function render(){
-  const term = (q.value||'').toLowerCase().trim();
-  const list = PRODUCTS.filter(p => p.name.toLowerCase().includes(term));
-  stats.textContent = `दिखा रहे हैं: ${list.length} / कुल: ${PRODUCTS.length}`;
-  grid.innerHTML = '';
-
-  list.forEach(p=>{
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.href = p.link;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.innerHTML = `
-      <div class="thumb">
-        <img src="${p.img}" alt="${p.name}" onerror="this.closest('.thumb').innerHTML='इमेज उपलब्ध नहीं'">
-      </div>
-      <p class="name">${p.name}</p>
-      <div class="btn">खरीदें</div>`;
-    grid.appendChild(a);
-  });
-}
-q.addEventListener('input', render);
-render();
-</script>
-
-</body>
-</html>
