@@ -19,60 +19,60 @@
       background:linear-gradient(180deg,#0b1020,#0f172a);
       min-height:100vh;
     }
-    .wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px;}
+    .wrap{max-width:1200px;margin:0 auto;padding:22px 12px 56px;}
 
+    /* ✅ Header: compact + responsive */
     header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;                 /* ✅ better */
-      flex-wrap:wrap;
-      gap:12px;                           /* ✅ compact */
-      padding:16px;                       /* ✅ compact */
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:12px;
+      align-items:center;
+      padding:14px;
       border:1px solid var(--border);
       border-radius:22px;
       background:rgba(255,255,255,.06);
       backdrop-filter:blur(10px);
     }
+    @media (max-width:720px){
+      header{grid-template-columns:1fr;}
+    }
 
-    .titleBox{ flex: 1 1 260px; min-width:0; } /* ✅ allow shrink */
-    h1{margin:0;font-size:clamp(22px,3.2vw,34px)}
-    p{margin:0;opacity:.8;font-size:14px}
+    h1{margin:0;font-size:clamp(20px,3.2vw,34px)}
+    p{margin:0;opacity:.8;font-size:13px}
 
-    /* ✅ Search box stays INSIDE header */
+    /* ✅ Search: thin + rounded + never overflow */
     .input{
-      flex: 1 1 280px;                    /* ✅ can shrink & wrap */
-      max-width:420px;                    /* ✅ limit */
       width:100%;
-      min-width:0;                        /* ✅ important for flex overflow */
+      max-width:320px;
+      height:40px;                 /* ✅ बारीक */
       display:flex;
       align-items:center;
       gap:10px;
-      padding:9px 11px;                   /* ✅ compact */
+      padding:0 12px;              /* ✅ compact */
       border:1px solid rgba(255,255,255,.16);
-      border-radius:14px;
+      border-radius:14px;          /* ✅ rounded */
       background:rgba(0,0,0,.22);
+      justify-self:end;
+      min-width:0;
+    }
+    @media (max-width:720px){
+      .input{max-width:100%; justify-self:stretch;}
     }
     .input input{
       width:100%;
-      min-width:0;                        /* ✅ prevents overflow */
       border:0;
       outline:none;
       background:transparent;
       color:#fff;
-      font-size:14px;
+      font-size:13px;              /* ✅ थोडा छोटा */
+      min-width:0;
     }
 
-    /* ✅ Mobile: stack nicely */
-    @media (max-width:640px){
-      header{flex-direction:column; align-items:stretch;}
-      .input{max-width:100%;}
-    }
+    .stats{margin:10px 2px 0;opacity:.85;font-size:13px}
 
-    .stats{margin:12px 2px 0;opacity:.85;font-size:13px}
-
-    /* SINGLE BANNER */
+    /* ✅ Single banner */
     .bannerWrap{
-      margin-top:16px;
+      margin-top:14px;
       border:1px solid rgba(255,255,255,.12);
       border-radius:22px;
       background:rgba(255,255,255,.06);
@@ -85,27 +85,62 @@
       display:block;
     }
 
-    .grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-    @media (max-width:1100px){.grid{grid-template-columns:repeat(4,1fr);}}
-    @media (max-width:860px){.grid{grid-template-columns:repeat(3,1fr);}}
-    @media (max-width:520px){.grid{grid-template-columns:repeat(2,1fr);}}
+    /* ✅ Products grid: mobile friendly */
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap:14px;
+    }
+    @media (max-width:420px){
+      .grid{ grid-template-columns: repeat(2, 1fr); } /* ✅ small mobile: 2 columns fix */
+    }
 
     .card{
-      border-radius:18px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);overflow:hidden;text-decoration:none;color:inherit;
-      box-shadow:0 12px 30px rgba(0,0,0,.30);transition:.25s
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      overflow:hidden;
+      text-decoration:none;
+      color:inherit;
+      box-shadow:0 12px 30px rgba(0,0,0,.30);
+      transition:.22s;
+      display:block;
     }
-    .card:hover{border-color:rgba(255,255,255,.22);transform:translateY(-3px)}
-    .thumb{aspect-ratio:4/3;overflow:hidden;border-radius:14px;margin:12px;background:#0a1326;display:grid;place-items:center}
-    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-    .card:hover img{transform:scale(1.06)}
-    .name{padding:0 12px;font-weight:600;font-size:14px}
+    .card:hover{border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
+
+    .thumb{
+      aspect-ratio:4/3;
+      overflow:hidden;
+      border-radius:14px;
+      margin:10px;
+      background:#0a1326;
+      display:grid;
+      place-items:center;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .22s ease;
+      display:block;
+    }
+    .card:hover img{transform:scale(1.05)}
+
+    .name{padding:0 10px;font-weight:600;font-size:13px; line-height:1.2}
     .btn{
-      margin:10px 12px 14px;padding:10px 12px;font-weight:700;font-size:12px;text-align:center;
-      border-radius:12px;border:1px solid rgba(255,255,255,.18);
-      background:linear-gradient(180deg,#38bdf8,#0284c7);color:#001224
+      margin:9px 10px 12px;
+      padding:9px 10px;
+      font-weight:800;
+      font-size:12px;
+      text-align:center;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg,#38bdf8,#0284c7);
+      color:#001224;
     }
-    footer{text-align:center;margin-top:40px;font-size:12px;opacity:.7}
+
+    footer{text-align:center;margin-top:36px;font-size:12px;opacity:.7}
   </style>
 </head>
 
@@ -125,13 +160,23 @@
 
   <div id="stats" class="stats"></div>
 
-  <!-- ✅ सिर्फ एक ही बैनर इमेज -->
+  <!-- ✅ फक्त एकच बॅनर -->
   <div class="bannerWrap">
     <img
       src="https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Banner%20Advertising.webp?raw=true"
       alt="विज्ञापन बैनर"
+      loading="lazy"
       onerror="this.outerHTML='बैनर इमेज लोड नहीं हुई'">
   </div>
 
   <main>
     <div id="grid" class="grid"></div>
+  </main>
+
+  <footer>© 2025 किसान खरीद केंद्र</footer>
+</div>
+
+<script>
+const PRODUCTS = [
+  { name:"तिरपाल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true", link:"https://IndiaMART.in/v/Nbj9aJbr" },
+  { name:"फेंसिंग वायर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true"
