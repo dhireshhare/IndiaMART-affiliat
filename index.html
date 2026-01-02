@@ -106,25 +106,29 @@
 
   <div id="stats" class="stats"></div>
 
-  <!-- VIDEO (पहले) + SINGLE BANNER IMAGE (वीडियो के नीचे) -->
+  <!-- VIDEO (optional) + SINGLE BANNER -->
   <section class="media">
-    <div class="videoBox">
-      <!-- यहां अपना YouTube EMBED URL डालें: https://www.youtube.com/embed/VIDEO_ID -->
+
+    <!-- व्हिडिओ URL नसेल तर हा भाग hide होईल (404 दिसणार नाही) -->
+    <div id="videoWrap" class="videoBox" style="display:none;">
       <iframe
-        src="VIDEO_EMBED_URL"
+        id="videoFrame"
+        src=""
         title="वीडियो"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
     </div>
 
-    <!-- सिर्फ यही एक बैनर इमेज (कोई लिंक नहीं) -->
+    <!-- फक्त एकच बॅनर इमेज -->
     <div class="banner">
       <img
         src="https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Banner%20Advertising.webp?raw=true"
         alt="विज्ञापन बैनर"
         onerror="this.outerHTML='बैनर इमेज लोड नहीं हुई'">
     </div>
+
   </section>
 
   <main>
@@ -135,6 +139,22 @@
 </div>
 
 <script>
+/* ✅ इथे YouTube EMBED लिंक टाका.
+   नसेल तर रिकामं ठेवा -> व्हिडिओ दिसणार नाही आणि 404 येणार नाही.
+   Example: https://www.youtube.com/embed/VIDEO_ID
+*/
+const VIDEO_SRC = ""; // <-- इथे embed लिंक टाका
+
+// VIDEO enable/disable
+const videoWrap = document.getElementById('videoWrap');
+const videoFrame = document.getElementById('videoFrame');
+if (VIDEO_SRC && VIDEO_SRC.trim().length > 0) {
+  videoFrame.src = VIDEO_SRC.trim();
+  videoWrap.style.display = "block";
+} else {
+  videoWrap.style.display = "none";
+}
+
 const PRODUCTS = [
   { name:"तिरपाल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true", link:"https://IndiaMART.in/v/Nbj9aJbr" },
   { name:"फेंसिंग वायर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true", link:"https://IndiaMART.in/v/RDprz6NM" },
@@ -169,7 +189,6 @@ const q = document.getElementById('q');
 function render(){
   const term = (q.value||'').toLowerCase().trim();
   const list = PRODUCTS.filter(p => p.name.toLowerCase().includes(term));
-
   stats.textContent = `दिखा रहे हैं: ${list.length} / कुल: ${PRODUCTS.length}`;
   grid.innerHTML = '';
 
