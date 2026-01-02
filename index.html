@@ -1,107 +1,162 @@
 <!doctype html>
-<html lang="mr">
+<html lang="hi">
 <head>
- <meta name="google-site-verification" content="DIhkazIl5M30zgS42jafgdpR0l4KB-25VrF0O3XvVWg" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>किसान खरेदी केंद्र — IndiaMART Affiliate Products</title>
-<meta name="description" content="IndiaMART Affiliate Products — शेतकऱ्यांसाठी सर्व प्रॉडक्ट्स एका ठिकाणी" />
-<meta name="theme-color" content="#0b1020" />
-<meta name="color-scheme" content="dark" />
-<style>
-  :root{ --border: rgba(255,255,255,.14); }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    color:#f5f7fb;
-    background:linear-gradient(180deg,#0b1020,#0f172a);
-    min-height:100vh;
-  }
-  .wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px;}
-  header{
-    display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
-    padding:18px;border:1px solid var(--border);border-radius:22px;
-    background:rgba(255,255,255,.06);backdrop-filter:blur(10px)
-  }
-  h1{margin:0;font-size:clamp(22px,3.2vw,34px)}
-  p{margin:0;opacity:.8;font-size:14px}
-  .input{
-    display:flex;align-items:center;gap:10px;padding:10px 12px;
-    border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(0,0,0,.22);
-    min-width:min(420px,92vw)
-  }
-  .input input{width:100%;border:0;outline:none;background:transparent;color:#fff;font-size:14px}
-  .stats{margin:12px 2px 0;opacity:.85;font-size:13px}
-  .grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-  @media (max-width:1100px){.grid{grid-template-columns:repeat(4,1fr);}}
-  @media (max-width:860px){.grid{grid-template-columns:repeat(3,1fr);}} /* मोबाइलसाठी 3 */
-  @media (max-width:520px){.grid{grid-template-columns:repeat(2,1fr);}} /* छोट्या स्क्रीनसाठी 2 */
-  .card{
-    border-radius:18px;border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.06);overflow:hidden;text-decoration:none;color:inherit;
-    box-shadow:0 12px 30px rgba(0,0,0,.30);transition:.25s
-  }
-  .card:hover{border-color:rgba(255,255,255,.22);transform:translateY(-3px)}
-  .thumb{aspect-ratio:4/3;overflow:hidden;border-radius:14px;margin:12px;background:#0a1326;display:grid;place-items:center}
-  .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-  .card:hover img{transform:scale(1.06)}
-  .name{padding:0 12px;font-weight:600;font-size:14px}
-  .btn{
-    margin:10px 12px 14px;padding:10px 12px;font-weight:700;font-size:12px;text-align:center;
-    border-radius:12px;border:1px solid rgba(255,255,255,.18);
-    background:linear-gradient(180deg,#38bdf8,#0284c7);color:#001224
-  }
-  footer{text-align:center;margin-top:40px;font-size:12px;opacity:.7}
-</style>
+  <meta name="google-site-verification" content="DIhkazIl5M30zgS42jafgdpR0l4KB-25VrF0O3XvVWg" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>किसान खरीद केंद्र — इंडियामार्ट एफिलिएट प्रोडक्ट्स</title>
+  <meta name="description" content="इंडियामार्ट एफिलिएट प्रोडक्ट्स — किसानों के लिए सभी प्रोडक्ट एक जगह" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="color-scheme" content="dark" />
+  <style>
+    :root{ --border: rgba(255,255,255,.14); }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#f5f7fb;
+      background:linear-gradient(180deg,#0b1020,#0f172a);
+      min-height:100vh;
+    }
+    .wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px;}
+    header{
+      display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;
+      padding:18px;border:1px solid var(--border);border-radius:22px;
+      background:rgba(255,255,255,.06);backdrop-filter:blur(10px)
+    }
+    h1{margin:0;font-size:clamp(22px,3.2vw,34px)}
+    p{margin:0;opacity:.8;font-size:14px}
+    .input{
+      display:flex;align-items:center;gap:10px;padding:10px 12px;
+      border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(0,0,0,.22);
+      min-width:min(420px,92vw)
+    }
+    .input input{width:100%;border:0;outline:none;background:transparent;color:#fff;font-size:14px}
+    .stats{margin:12px 2px 0;opacity:.85;font-size:13px}
+
+    /* VIDEO + BANNER */
+    .media{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      background:rgba(255,255,255,.06);
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,.30);
+    }
+    .videoBox{
+      position:relative;
+      aspect-ratio:16/9;
+      background:#050b18;
+    }
+    .videoBox iframe, .videoBox video{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      border:0;
+    }
+    .banner{
+      display:block;
+      border-top:1px solid rgba(255,255,255,.12);
+      background:#070f22;
+    }
+    .banner img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(4,1fr);}}
+    @media (max-width:860px){.grid{grid-template-columns:repeat(3,1fr);}}
+    @media (max-width:520px){.grid{grid-template-columns:repeat(2,1fr);}}
+
+    .card{
+      border-radius:18px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);overflow:hidden;text-decoration:none;color:inherit;
+      box-shadow:0 12px 30px rgba(0,0,0,.30);transition:.25s
+    }
+    .card:hover{border-color:rgba(255,255,255,.22);transform:translateY(-3px)}
+    .thumb{aspect-ratio:4/3;overflow:hidden;border-radius:14px;margin:12px;background:#0a1326;display:grid;place-items:center}
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+    .card:hover img{transform:scale(1.06)}
+    .name{padding:0 12px;font-weight:600;font-size:14px}
+    .btn{
+      margin:10px 12px 14px;padding:10px 12px;font-weight:700;font-size:12px;text-align:center;
+      border-radius:12px;border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg,#38bdf8,#0284c7);color:#001224
+    }
+    footer{text-align:center;margin-top:40px;font-size:12px;opacity:.7}
+  </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div>
-      <h1>किसान खरेदी केंद्र</h1>
-      <p>IndiaMART Affiliate Products</p>
+      <h1>किसान खरीद केंद्र</h1>
+      <p>इंडियामार्ट एफिलिएट प्रोडक्ट्स</p>
     </div>
     <div class="input">
-      <input id="q" type="search" placeholder="प्रॉडक्ट शोधा… (उदा. sprayer, pump, torch)" autocomplete="off" />
+      <input id="q" type="search" placeholder="प्रोडक्ट खोजें… (जैसे sprayer, pump, torch)" autocomplete="off" />
     </div>
   </header>
 
   <div id="stats" class="stats"></div>
 
+  <!-- VIDEO (पहले) + BANNER (वीडियो के नीचे) -->
+  <section class="media">
+    <div class="videoBox">
+      <!-- 1) अपना YouTube EMBED URL यहां डालें -->
+      <!-- Example: https://www.youtube.com/embed/VIDEO_ID -->
+      <iframe
+        src="VIDEO_EMBED_URL"
+        title="वीडियो"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+      <!-- अगर आपका MP4 वीडियो है, iframe हटाकर ये use करें:
+      <video src="video.mp4" controls playsinline></video>
+      -->
+    </div>
+
+    <!-- 2) banner.png फाइल index.html के साथ same folder में रखें -->
+    <a class="banner" href="https://IndiaMART.in/" target="_blank" rel="noopener noreferrer">
+      <img src="banner.png" alt="विज्ञापन बैनर" onerror="this.outerHTML='बैनर इमेज नहीं मिली (banner.png)'">
+    </a>
+  </section>
+
   <main>
     <div id="grid" class="grid"></div>
   </main>
 
-  <footer>© 2025 किसान खरेदी केंद्र</footer>
+  <footer>© 2025 किसान खरीद केंद्र</footer>
 </div>
 
 <script>
 const PRODUCTS = [
-  { name:"Tarpaulins", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true", link:"https://IndiaMART.in/v/Nbj9aJbr" },
-  { name:"Fencing Wire", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true", link:"https://IndiaMART.in/v/RDprz6NM" },
-  { name:"Britelite Led torch", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Britelite%20Led%20torch.webp?raw=true", link:"https://IndiaMART.in/v/5xODB4XM" },
-  { name:"Chain Saw Machine", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Chain%20Saw%20Machine.webp?raw=true", link:"https://IndiaMART.in/v/D6bRgB6G" },
-  { name:"Solar Inverter", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Inverter.webp?raw=true", link:"https://IndiaMART.in/v/zOPy5Ovr" },
-  { name:"Solar Zatka Machine Kit", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Zatka%20Machine%20Kit.webp?raw=true", link:"https://IndiaMART.in/v/8RKwlZj7" },
-  { name:"Megaphone", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Megaphone.webp?raw=true", link:"https://IndiaMART.in/v/rmXKNQXL" },
-  { name:"Roundup", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Roundup.webp?raw=true", link:"https://IndiaMART.in/v/KEYQjLmr" },
-  { name:"Rain Pipe", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Rain%20Pipe.webp?raw=true", link:"https://IndiaMART.in/v/b2wq86BX" },
-  { name:"Brush Cutters", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Brush%20Cutters.webp?raw=true", link:"https://IndiaMART.in/v/NO9Gyq8e" },
-  { name:"Spray Nozzle", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Spray%20Nozzle.webp?raw=true", link:"https://IndiaMART.in/v/PAAw2bqM" },
-  { name:"Netafim Drip Irrigation", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Netafim%20Drip%20Irrigation.webp?raw=true", link:"https://IndiaMART.in/v/6v8xjGMn" },
-  { name:"Solar Camera", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Camera.webp?raw=true", link:"https://IndiaMART.in/v/kNex5jJA" },
-  { name:"Flour Mill", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Flour%20Mill.webp?raw=true", link:"https://IndiaMART.in/v/xmM1yJY7" },
-  { name:"Power Sprayer", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Sprayer.webp?raw=true", link:"https://IndiaMART.in/v/63Eoq0Bx" },
-  { name:"PVC Pipes", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/PVC%20Pipes.webp?raw=true", link:"https://IndiaMART.in/v/3KvEZxmw" },
-  { name:"Earth Auger", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Earth%20Auger.webp?raw=true", link:"https://IndiaMART.in/v/JEaA2b3N" },
-  { name:"Battery Spray Pump", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Battery%20Spray%20Pump.webp?raw=true", link:"https://IndiaMART.in/v/7pj22yxq" },
-  { name:"Electric Chaff Cutter", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Electric%20Chaff%20Cutter.webp?raw=true", link:"https://IndiaMART.in/v/21xQ96Gm" },
-  { name:"Shaktiman Rotary Tiller", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Shaktiman%20Rotary%20Tiller.webp?raw=true", link:"https://IndiaMART.in/v/w59Zzae3" },
-  { name:"Nilkamal Plastic Crates", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Nilkamal%20Plastic%20Crates.webp?raw=true", link:"https://IndiaMART.in/v/Mm4gk6yr" },
-  { name:"Power Weeder", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Weeder.webp?raw=true", link:"https://IndiaMART.in/v/yeAgBKPe" },
-  { name:"Sugarcane Juice Machine", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Sugarcane%20Juice%20Machine.webp?raw=true", link:"https://IndiaMART.in/v/lkP8oLr6" },
-  { name:"Irrigation Sprinklers", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Irrigation%20Sprinklers.webp?raw=true", link:"https://IndiaMART.in/v/QLP20eVX" }
+  { name:"तिरपाल", keywords:"tarpaulin tarpaulins तिरपाल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true", link:"https://IndiaMART.in/v/Nbj9aJbr" },
+  { name:"फेंसिंग वायर", keywords:"fencing wire फेंसिंग वायर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true", link:"https://IndiaMART.in/v/RDprz6NM" },
+  { name:"ब्राइटलाइट एलईडी टॉर्च", keywords:"torch led britelite ब्राइटलाइट टॉर्च", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Britelite%20Led%20torch.webp?raw=true", link:"https://IndiaMART.in/v/5xODB4XM" },
+  { name:"चेन सॉ मशीन", keywords:"chain saw chainsaw चेन सॉ", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Chain%20Saw%20Machine.webp?raw=true", link:"https://IndiaMART.in/v/D6bRgB6G" },
+  { name:"सोलर इन्वर्टर", keywords:"solar inverter सोलर इन्वर्टर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Inverter.webp?raw=true", link:"https://IndiaMART.in/v/zOPy5Ovr" },
+  { name:"सोलर झटका मशीन किट", keywords:"solar zatka kit सोलर झटका", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Zatka%20Machine%20Kit.webp?raw=true", link:"https://IndiaMART.in/v/8RKwlZj7" },
+  { name:"मेगाफोन", keywords:"megaphone मेगाफोन", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Megaphone.webp?raw=true", link:"https://IndiaMART.in/v/rmXKNQXL" },
+  { name:"राउंडअप", keywords:"roundup weed killer राउंडअप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Roundup.webp?raw=true", link:"https://IndiaMART.in/v/KEYQjLmr" },
+  { name:"रेन पाइप", keywords:"rain pipe रेन पाइप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Rain%20Pipe.webp?raw=true", link:"https://IndiaMART.in/v/b2wq86BX" },
+  { name:"ब्रश कटर", keywords:"brush cutter ब्रश कटर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Brush%20Cutters.webp?raw=true", link:"https://IndiaMART.in/v/NO9Gyq8e" },
+  { name:"स्प्रे नोजल", keywords:"spray nozzle स्प्रे नोजल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Spray%20Nozzle.webp?raw=true", link:"https://IndiaMART.in/v/PAAw2bqM" },
+  { name:"नेटाफिम ड्रिप इरिगेशन", keywords:"netafim drip irrigation ड्रिप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Netafim%20Drip%20Irrigation.webp?raw=true", link:"https://IndiaMART.in/v/6v8xjGMn" },
+  { name:"सोलर कैमरा", keywords:"solar camera सोलर कैमरा", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Solar%20Camera.webp?raw=true", link:"https://IndiaMART.in/v/kNex5jJA" },
+  { name:"आटा चक्की", keywords:"flour mill atta chakki आटा चक्की", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Flour%20Mill.webp?raw=true", link:"https://IndiaMART.in/v/xmM1yJY7" },
+  { name:"पावर स्प्रेयर", keywords:"power sprayer पावर स्प्रेयर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Sprayer.webp?raw=true", link:"https://IndiaMART.in/v/63Eoq0Bx" },
+  { name:"पीवीसी पाइप", keywords:"pvc pipes पीवीसी पाइप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/PVC%20Pipes.webp?raw=true", link:"https://IndiaMART.in/v/3KvEZxmw" },
+  { name:"अर्थ ऑगर", keywords:"earth auger ऑगर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Earth%20Auger.webp?raw=true", link:"https://IndiaMART.in/v/JEaA2b3N" },
+  { name:"बैटरी स्प्रे पंप", keywords:"battery spray pump बैटरी पंप", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Battery%20Spray%20Pump.webp?raw=true", link:"https://IndiaMART.in/v/7pj22yxq" },
+  { name:"इलेक्ट्रिक चाफ कटर", keywords:"electric chaff cutter चाफ कटर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Electric%20Chaff%20Cutter.webp?raw=true", link:"https://IndiaMART.in/v/21xQ96Gm" },
+  { name:"शक्तिमान रोटरी टिलर", keywords:"shaktiman rotary tiller टिलर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Shaktiman%20Rotary%20Tiller.webp?raw=true", link:"https://IndiaMART.in/v/w59Zzae3" },
+  { name:"नीलकमल प्लास्टिक क्रेट", keywords:"nilkamal plastic crates क्रेट", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Nilkamal%20Plastic%20Crates.webp?raw=true", link:"https://IndiaMART.in/v/Mm4gk6yr" },
+  { name:"पावर वीडर", keywords:"power weeder पावर वीडर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Power%20Weeder.webp?raw=true", link:"https://IndiaMART.in/v/yeAgBKPe" },
+  { name:"गन्ना जूस मशीन", keywords:"sugarcane juice machine गन्ना जूस", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Sugarcane%20Juice%20Machine.webp?raw=true", link:"https://IndiaMART.in/v/lkP8oLr6" },
+  { name:"सिंचाई स्प्रिंकलर", keywords:"irrigation sprinklers स्प्रिंकलर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Irrigation%20Sprinklers.webp?raw=true", link:"https://IndiaMART.in/v/QLP20eVX" }
 ];
 
 const grid=document.getElementById('grid');
@@ -109,10 +164,15 @@ const stats=document.getElementById('stats');
 const q=document.getElementById('q');
 
 function render(){
-  const term=(q.value||'').toLowerCase();
-  const list=PRODUCTS.filter(p=>p.name.toLowerCase().includes(term));
-  stats.textContent=`दाखवत आहे: ${list.length} / एकूण: ${PRODUCTS.length}`;
+  const term=(q.value||'').toLowerCase().trim();
+  const list=PRODUCTS.filter(p=>{
+    const hay = (p.name + " " + (p.keywords||"")).toLowerCase();
+    return hay.includes(term);
+  });
+
+  stats.textContent = `दिखा रहे हैं: ${list.length} / कुल: ${PRODUCTS.length}`;
   grid.innerHTML='';
+
   list.forEach(p=>{
     const a=document.createElement('a');
     a.className='card';
@@ -120,9 +180,12 @@ function render(){
     a.target='_blank';
     a.rel='noopener noreferrer';
     a.innerHTML=`
-      <div class="thumb"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.thumb').innerHTML='Image उपलब्ध नाही'"></div>
+      <div class="thumb">
+        <img src="${p.img}" alt="${p.name}"
+          onerror="this.closest('.thumb').innerHTML='इमेज उपलब्ध नहीं'">
+      </div>
       <p class="name">${p.name}</p>
-      <div class="btn">खरेदी करा</div>`;
+      <div class="btn">खरीदें</div>`;
     grid.appendChild(a);
   });
 }
