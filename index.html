@@ -37,8 +37,8 @@
     .input input{width:100%;border:0;outline:none;background:transparent;color:#fff;font-size:14px}
     .stats{margin:12px 2px 0;opacity:.85;font-size:13px}
 
-    /* VIDEO + SINGLE BANNER */
-    .media{
+    /* SINGLE BANNER */
+    .bannerWrap{
       margin-top:16px;
       border:1px solid rgba(255,255,255,.12);
       border-radius:22px;
@@ -46,22 +46,7 @@
       overflow:hidden;
       box-shadow:0 12px 30px rgba(0,0,0,.30);
     }
-    .videoBox{
-      position:relative;
-      aspect-ratio:16/9;
-      background:#050b18;
-    }
-    .videoBox iframe{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      border:0;
-    }
-
-    .banner{
-      border-top:1px solid rgba(255,255,255,.12);
-      background:#070f22;
-    }
-    .banner img{
+    .bannerWrap img{
       width:100%;
       height:auto;
       display:block;
@@ -106,30 +91,13 @@
 
   <div id="stats" class="stats"></div>
 
-  <!-- VIDEO (optional) + SINGLE BANNER -->
-  <section class="media">
-
-    <!-- व्हिडिओ URL नसेल तर हा भाग hide होईल (404 दिसणार नाही) -->
-    <div id="videoWrap" class="videoBox" style="display:none;">
-      <iframe
-        id="videoFrame"
-        src=""
-        title="वीडियो"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <!-- फक्त एकच बॅनर इमेज -->
-    <div class="banner">
-      <img
-        src="https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Banner%20Advertising.webp?raw=true"
-        alt="विज्ञापन बैनर"
-        onerror="this.outerHTML='बैनर इमेज लोड नहीं हुई'">
-    </div>
-
-  </section>
+  <!-- ✅ सिर्फ एक ही बैनर इमेज -->
+  <div class="bannerWrap">
+    <img
+      src="https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Banner%20Advertising.webp?raw=true"
+      alt="विज्ञापन बैनर"
+      onerror="this.outerHTML='बैनर इमेज लोड नहीं हुई'">
+  </div>
 
   <main>
     <div id="grid" class="grid"></div>
@@ -139,22 +107,6 @@
 </div>
 
 <script>
-/* ✅ इथे YouTube EMBED लिंक टाका.
-   नसेल तर रिकामं ठेवा -> व्हिडिओ दिसणार नाही आणि 404 येणार नाही.
-   Example: https://www.youtube.com/embed/VIDEO_ID
-*/
-const VIDEO_SRC = ""; // <-- इथे embed लिंक टाका
-
-// VIDEO enable/disable
-const videoWrap = document.getElementById('videoWrap');
-const videoFrame = document.getElementById('videoFrame');
-if (VIDEO_SRC && VIDEO_SRC.trim().length > 0) {
-  videoFrame.src = VIDEO_SRC.trim();
-  videoWrap.style.display = "block";
-} else {
-  videoWrap.style.display = "none";
-}
-
 const PRODUCTS = [
   { name:"तिरपाल", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Tarpaulins.webp?raw=true", link:"https://IndiaMART.in/v/Nbj9aJbr" },
   { name:"फेंसिंग वायर", img:"https://github.com/dhireshhare/IndiaMART-affiliat/blob/main/Image/Fencing%20Wire.webp?raw=true", link:"https://IndiaMART.in/v/RDprz6NM" },
